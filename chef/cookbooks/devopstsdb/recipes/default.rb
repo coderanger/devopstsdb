@@ -24,7 +24,7 @@ deploy_revision "/srv/devopstsdb" do
   create_dirs_before_symlink []
   symlinks({})
   symlink_before_migrate({})
-  notify :execute, 'execute[devopstsdb requirements]'
+  notifies :execute, 'execute[devopstsdb requirements]', :immediately
 end
 
 template "/etc/init/devopstsdb.conf" do
