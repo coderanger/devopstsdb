@@ -1,4 +1,5 @@
 include_recipe "python"
+include_recipe "nginx"
 
 directory "/srv/devopstsdb" do
   owner "www-data"
