@@ -1,0 +1,47 @@
+{
+      "elements": [
+        {
+          "type": "hbar",
+          "values": [
+            {
+              "left": 3,
+              "right": 4
+            },
+            {
+              "left": 2,
+              "right": 5
+            },
+            {
+              "left": 6,
+              "right": 8
+            },
+            {
+              "left": 4,
+              "right": 6
+            },
+            {
+              "left": 4,
+              "right": 8
+            }
+          ],
+          "colour": "#AF99DF"
+        }
+      ],
+      "title": {
+        "text": "Sun Jun 19 2011"
+      },
+      "y_axis": {
+        "labels": [
+          "Job 1",
+          "Job 2",
+          "Job 3",
+          "Job 4",
+          "Job 5"
+        ]
+      },
+      "x_axis": {
+        "offset": false,
+        "min": 0,
+        "max": 10
+      }
+}
