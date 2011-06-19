@@ -1,5 +1,8 @@
 include_recipe "python"
+
 package "git-core"
+
+include_recipe "nginx"
 
 directory "/srv/devopstsdb" do
   owner "www-data"
