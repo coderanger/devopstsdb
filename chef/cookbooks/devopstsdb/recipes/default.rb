@@ -27,4 +27,23 @@ deploy_revision "/srv/devopstsdb" do
   notify :execute, 'execute[devopstsdb requirements]'
 end
 
+template "/etc/init/devopstsdb.conf" do
+  source "upstart.conf"
+  owner "root"
+  group "root"
+end
 
+service "devopstsdb" do
+  provider Chef::Provider::Service::Upstart
+  action [:enable, :start]
+end
+
+template "/etc/nginx/sites-available/devopstsdb.conf" do
+  source "devopstsdb-nginx.conf"
+  owner "root"
+  group "root"
+  notify :restart, 'service[nginx]'
+end
+
+nginx_site 'default', :enable => false
+nginx_site 'devopstsdb.conf'
