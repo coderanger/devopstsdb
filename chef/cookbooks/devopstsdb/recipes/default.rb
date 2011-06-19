@@ -51,5 +51,8 @@ template "/etc/nginx/sites-available/devopstsdb.conf" do
   notifies :restart, 'service[nginx]', :immediately
 end
 
-nginx_site 'default', :enable => false
+nginx_site 'default' do
+  enable false
+end
+
 nginx_site 'devopstsdb.conf'
