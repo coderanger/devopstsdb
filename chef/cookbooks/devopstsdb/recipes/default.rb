@@ -12,7 +12,7 @@ python_virtualenv "/srv/devopstsdb/.venv" do
 end
 
 execute "devopstsdb requirements" do
-  execute :nothing
+  action :nothing
   command "/srv/devopstsdb/.venv/bin/pip install -r /srv/devopstsdb/current/app/requirements.txt"
 end
 
