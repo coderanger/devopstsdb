@@ -42,7 +42,7 @@ template "/etc/nginx/sites-available/devopstsdb.conf" do
   source "devopstsdb-nginx.conf"
   owner "root"
   group "root"
-  notify :restart, 'service[nginx]'
+  notifies :restart, 'service[nginx]', :immediately
 end
 
 nginx_site 'default', :enable => false
