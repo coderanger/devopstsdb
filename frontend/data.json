@@ -1,0 +1,140 @@
+{
+    "data": [
+        {
+            "ts": "2011-06-18T17:20:00", 
+            "values": [
+                {
+                    "key": "cpu", 
+                    "value": "0.2932"
+                }, 
+                {
+                    "key": "memory", 
+                    "value": "0.8676"
+                }, 
+                {
+                    "key": "diskfree", 
+                    "value": "0.6763"
+                }
+            ]
+        },
+        {
+            "ts": "2011-06-18T17:21:00", 
+            "values": [
+                {
+                    "key": "cpu", 
+                    "value": "0.3432"
+                }, 
+                {
+                    "key": "memory", 
+                    "value": "0.8676"
+                }, 
+                {
+                    "key": "diskfree", 
+                    "value": "0.6763"
+                }
+            ]
+        },
+        {
+            "ts": "2011-06-18T17:22:00", 
+            "values": [
+                {
+                    "key": "cpu", 
+                    "value": "0.8632"
+                }, 
+                {
+                    "key": "memory", 
+                    "value": "0.8676"
+                }, 
+                {
+                    "key": "diskfree", 
+                    "value": "0.6763"
+                }
+            ]
+        },
+        {
+            "ts": "2011-06-18T17:23:00", 
+            "values": [
+                {
+                    "key": "cpu", 
+                    "value": "0.5432"
+                }, 
+                {
+                    "key": "memory", 
+                    "value": "0.8676"
+                }, 
+                {
+                    "key": "diskfree", 
+                    "value": "0.6763"
+                }
+            ]
+        },
+        {
+            "ts": "2011-06-18T17:24:00", 
+            "values": [
+                {
+                    "key": "cpu", 
+                    "value": "0.5232"
+                }, 
+                {
+                    "key": "memory", 
+                    "value": "0.8676"
+                }, 
+                {
+                    "key": "diskfree", 
+                    "value": "0.6763"
+                }
+            ]
+        },
+        {
+            "ts": "2011-06-18T17:25:00", 
+            "values": [
+                {
+                    "key": "cpu", 
+                    "value": "0.4532"
+                }, 
+                {
+                    "key": "memory", 
+                    "value": "0.8676"
+                }, 
+                {
+                    "key": "diskfree", 
+                    "value": "0.6763"
+                }
+            ]
+        },
+        {
+            "ts": "2011-06-18T17:26:00", 
+            "values": [
+                {
+                    "key": "cpu", 
+                    "value": "0.3432"
+                }, 
+                {
+                    "key": "memory", 
+                    "value": "0.8676"
+                }, 
+                {
+                    "key": "diskfree", 
+                    "value": "0.6763"
+                }
+            ]
+        },
+        {
+            "ts": "2011-06-18T17:27:00", 
+            "values": [
+                {
+                    "key": "cpu", 
+                    "value": "0.3432"
+                }, 
+                {
+                    "key": "memory", 
+                    "value": "0.8676"
+                }, 
+                {
+                    "key": "diskfree", 
+                    "value": "0.6763"
+                }
+            ]
+        }
+    ]
+}

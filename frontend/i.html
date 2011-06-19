@@ -1,0 +1,168 @@
+<html>
+  <head>
+    <title>Chart example</title>
+    <script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" src="js/swfobject.js"></script>
+    <script type="text/javascript" src="js/date.js""></script>
+
+    <script>
+    function update_data(data) {
+      var new_data = $.extend(true, {}, data_base);
+      var ev = [];
+      var all_ts = [];
+      var all_values = [];
+      new_data.elements[0].values = ev;
+      $.each(data.data, function(i, v) {
+        console.log(v.ts);
+        ts = Date.parse(v.ts).getTime() / 1000;
+        value = parseFloat(v.values[0].value);
+        ev.push({"x": ts, "y": value});
+
+        all_ts.push(ts);
+        all_values.push(value);
+      });
+
+      x_min_max = min_max(all_ts);
+      new_data.x_axis.max = x_min_max.max;
+      new_data.x_axis.min = x_min_max.min;
+
+      y_min_max = min_max(all_values);
+      new_data.y_axis.max = y_min_max.max;
+      new_data.y_axis.min = y_min_max.min;
+
+      return new_data;
+    }
+
+    function min_max(arr) {
+      var min = null;
+      var max = null;
+      for (var i = 0, len = arr.length; i < len; ++i)
+      {
+          var elem = arr[i];
+          if (min === null || min > elem) min = elem;
+          if (max === null || max < elem) max = elem;
+      }
+      return {"min": min, "max": max};
+    }
+
+    function init_callback(json_data, textStatus, jqXHR) {
+      swfobject.embedSWF(
+        "open-flash-chart.swf", "my_chart",
+        "550", "350", "9.0.0", "expressInstall.swf" );
+      data = update_data(json_data);
+      console.log(data);
+      window.setInterval(update_tick, 50000);
+    }
+
+    function update_callback(json_data, textStatus, jqXHR) {
+      data = update_data(json_data);
+      tmp = findSWF("my_chart");
+      x = tmp.load( JSON.stringify(data) );
+    }
+
+    function update_tick() {
+      $.getJSON('data2.json', update_callback);
+    }
+
+    $.getJSON('data.json', init_callback);
+    </script>
+
+    <script type="text/javascript"> 
+     
+    function ofc_ready()
+    {
+        // alert('ofc_ready');
+    }
+     
+    function open_flash_chart_data()
+    {
+        // alert( 'reading data' );
+        return JSON.stringify(data);
+    }
+     
+    function findSWF(movieName) {
+      if (navigator.appName.indexOf("Microsoft")!= -1) {
+        return window[movieName];
+      } else {
+        return document[movieName];
+      }
+    }
+        
+    var data = null;
+
+    var data_base = {
+    "elements": [
+        {
+            "colour": "#DB1750", 
+            "dot-style": {
+                "dot-size": 3, 
+                "halo-size": 2, 
+                "tip": "#date:d M y# Value: #val#", 
+                "type": "hollow-dot"
+            }, 
+            "type": "scatter_line", 
+            "values": [
+                {
+                    "x": 1293840000, 
+                    "y": 12.103677462
+                }
+            ], 
+            "width": 3
+        }
+    ], 
+    "title": {
+        "text": 31
+    }, 
+    "x_axis": {
+        "labels": {
+            "rotate": 90, 
+            "steps": 60, 
+            "text": "#date:H:i l jS, M Y#", 
+            "visible-steps": 2
+        }, 
+        "max": 1296432000, 
+        "min": 1293840000, 
+        "steps": 86400
+    }, 
+    "y_axis": {
+        "max": 15, 
+        "min": 0, 
+        "steps": 5
+    }
+}
+     
+    </script> 
+
+<script>
+function update( chart_data )
+{
+  
+  // choose a random bar (one of the 5 bars):
+  var item = Math.floor(Math.random()*5);
+  
+  // set the left value: min 0 max 4
+  var left = Math.floor(Math.random()*4); 
+  
+  // set the right value: min 5 max 8:
+  var right = Math.floor(Math.random()*3) + 5;
+  
+  //
+  // change the data object:
+  //
+  var hbar = {right:right, left:left};
+  chart_data['elements'][0]['values'][item] = hbar;
+  
+  //
+  // pass the new chart_data as a JSON string to the chart:
+  //
+  tmp = findSWF("my_chart");
+    x = tmp.load( JSON.stringify(chart_data) );
+}
+</script>
+  </head>
+  <body>
+    <h1>Chart</h1>
+
+    <div id="my_chart"></div> 
+  </body>
+</html>
