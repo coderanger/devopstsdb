@@ -1,5 +1,5 @@
 include_recipe "python"
-
+package "git-core"
 directory "/srv/devopstsdb" do
   owner "www-data"
   group "www-data"
