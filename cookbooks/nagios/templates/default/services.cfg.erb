@@ -88,41 +88,33 @@ define service {
 #}
 
 <% end -%>
-<% unless @service_hosts['webserver'].nil? -%>
+<% unless @service_hosts['nginx-server'].nil? -%>
 # basic web server http check
 define service {
     service_description HTTP Processes
-    hostgroup_name      webserver
+    hostgroup_name      nginx-server
     check_command       check_http
     use                 default-service
 }
 
 <% end -%>
-<% unless @service_hosts['appserver'].nil? -%>
-# basic check if appserver role is running unicorn
-define service {
-    service_description Unicorn Processes
-    hostgroup_name      appserver
-    check_command       check_nrpe!check_unicorn
-    use                 default-service
-}
+<% unless @service_hosts['gunicorn-server'].nil? -%>
 
 define service {
-    service_description Unicorn HTTP
-    hostgroup_name      appserver
+    service_description GUnicorn HTTP
+    hostgroup_name      gunicorn-server
     check_command       check_http_port_expect!8080!"HTTP/1.1 302 Found"
     use                 default-service
 }
 
 <% end -%>
-<% unless @service_hosts['database_master'].nil? -%>
-# basic check if the database_master role is a mysql server
-# database_master service checks
-define service {
-    service_description MySQL
-    hostgroup_name      database_master
-    check_command       check_nrpe!check_mysql_server
-    use                 default-service
-}
-
+<% unless @service_hosts['redis-server'].nil? -%>
+# I would configure redis if I had one! 6379
+#define service {
+#    service_description Redis
+#    hostgroup_name      redis-server
+#    check_command       check_tcp!6379
+#    use                 default-service
+#}
+#
 <% end -%>
